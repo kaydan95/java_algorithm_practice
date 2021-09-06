@@ -15,11 +15,11 @@ public class MainFrame extends JFrame implements ChangeListener {
         super(title);
 
         this.tabbedPane = new JTabbedPane();
-        tabbedPane.add("홈", new Panel1());
+        tabbedPane.add("메인", new Panel1());
         tabbedPane.add("물품등록", new Panel2());
-        tabbedPane.add("물품조회", new Panel3());
+        tabbedPane.add("물품목록", new Panel3());
 
-        tabbedPane.setSelectedIndex(0);
+        tabbedPane.setSelectedIndex(2);
         tabbedPane.addChangeListener(this);
 
         this.add(tabbedPane);

@@ -62,8 +62,8 @@ public class ItemDB {
     public int updateItem(Item item) throws Exception{
         Bson query = Filters.eq("_id", item.getCode());
         Bson update = Updates.combine(
-            Updates.set("name", item.getName())
-            //수정할 항목 더 추가하기
+            Updates.set("name", item.getName()),
+            Updates.set("price", item.getPrice())
         );
         UpdateResult result = this.collection.updateOne(query, update);
         if(result.getMatchedCount() == 1){
@@ -74,7 +74,7 @@ public class ItemDB {
 
     //물품조회
     public List<Item> selectItems() throws Exception {
-        MongoCursor<Document> cursor = collection.find().sort(Filters.eq("_id", 1)).cursor();
+        MongoCursor<Document> cursor = collection.find().sort(Filters.eq("name", 1)).cursor();
         List<Item> list = new ArrayList<Item>();
 
         while(cursor.hasNext()){

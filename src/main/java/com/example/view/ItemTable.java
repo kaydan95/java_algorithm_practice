@@ -2,6 +2,7 @@ package com.example.view;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -68,11 +69,12 @@ public class ItemTable extends JTable {
         public void deleteItems() throws Exception{
             int[] rows = this.getSelectedRows(); //여러개를 선택해야하기 때문에 배열로 / 선택된 위치정보확인
             if(rows.length <= 0){
-                
+                JOptionPane.showMessageDialog(this, "삭제할 항목을 선택하세요" ,"실패", JOptionPane.WARNING_MESSAGE);
             }else{
                 for(int idx : rows){
                     // table에서 물품번호 가져오기
                     String code = this.getModel().getValueAt(idx, 0).toString();
+
                     ItemDB.getInstance().deleteItem(Integer.parseInt(code));
                 }
                 this.refreshData();

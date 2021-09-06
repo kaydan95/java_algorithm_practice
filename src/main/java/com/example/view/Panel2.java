@@ -80,7 +80,7 @@ public class Panel2 extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == btnNewButton){
-            int code = Integer.parseInt( textField.getText());
+            int code = Integer.parseInt(textField.getText());
             String name = textField_1.getText();
             String text = textArea.getText();
             int price = Integer.parseInt(textField_2.getText());
@@ -97,7 +97,11 @@ public class Panel2 extends JPanel implements ActionListener{
                 int ret = ItemDB.getInstance().insertItem(item);
                 if(ret == 1){
                     JOptionPane.showMessageDialog(this, "물품등록성공", "성공", JOptionPane.INFORMATION_MESSAGE);
-                    //textField.setText("");
+                    textField.setText("");
+                    textField_1.setText("");
+                    textArea.setText("");
+                    textField_2.setText("");
+                    textField_3.setText("");
                 }
                 else{
                     JOptionPane.showMessageDialog(this, "물품등록실패", "실패", JOptionPane.WARNING_MESSAGE);
