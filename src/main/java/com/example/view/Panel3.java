@@ -38,9 +38,11 @@ public class Panel3 extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == button1){
             try{
-                int ret = JOptionPane.showConfirmDialog(null, "수정하시겠습니까?", "수정", JOptionPane.OK_CANCEL_OPTION);
+                int ret = JOptionPane.showConfirmDialog(null, "수정하시겠습니까?", "수정", JOptionPane.INFORMATION_MESSAGE);
                 if(ret == 0){
+                    JOptionPane.showConfirmDialog(null, "수정완료", "완료", JOptionPane.INFORMATION_MESSAGE);
                     ItemTable.getInstance().updateItems();
+                    
                 }
             }catch(Exception e1){
                 e1.printStackTrace();
@@ -48,7 +50,7 @@ public class Panel3 extends JPanel implements ActionListener {
         }
         if(e.getSource() == button2){
             try {
-                int ret = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.OK_CANCEL_OPTION);
+                int ret = JOptionPane.showConfirmDialog(null, "삭제하시겠습니까?", "삭제", JOptionPane.INFORMATION_MESSAGE);
                 if(ret == 0){
                     ItemTable.getInstance().deleteItems();
                 }
