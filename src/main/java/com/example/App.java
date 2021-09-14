@@ -1,15 +1,49 @@
 package com.example;
 
-import com.example.view.MainFrame;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+import java.util.Stack;
 
-/**
- * Hello world!
- *
- */
+
+
+// import com.example.view.MainFrame;
+
 public class App 
 {
-    public static void main( String[] args )
+
+    private static Scanner sc;
+
+    public static void main( String[] args ) throws IOException
     {
-        new MainFrame("제목");
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        //(와 )를 쪼개서 넣을 첫 문자열
+        
+        String s = br.readLine();
+
+        //쪼갠 문자열들을 담았다가 꺼냇다가 할 스택
+        Stack<Character> st = new Stack<Character>();
+
+        //개수
+        int N = 0;
+
+        for(int i=0; i<s.length(); i++){
+            if(s.charAt(i) == '('){
+                st.push('(');
+            }
+            else{
+                st.pop();
+                if(s.charAt(i-1)== '('){
+                    N += st.size();
+                }
+                else{
+                    N += 1;
+                }
+
+            }
+        }
+        System.out.println(N);
     }
 }
