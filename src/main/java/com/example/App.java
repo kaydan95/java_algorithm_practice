@@ -1,49 +1,56 @@
 package com.example;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.StringTokenizer;
+
+public class App {
+    private static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) throws IOException {
+        //크기가 N인 수열 A={A1, A2, A3 ... An}
+        //오큰수NGE(i)도 N개나온다
+        //수열의 크기가 4 / A={3 5 2 7} res[0]=5
+        //예제 출력 {5 7 7 -1}
+
+        // BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        Stack<Integer> st = new Stack<>();
+        StringBuilder sb = new StringBuilder();
+
+        int C = sc.nextInt();
+
+        int[] N = new int[C];
+
+        StringTokenizer S = new StringTokenizer(sc.nextLine());
 
 
+        for(int i=0; i<N.length; i++){
+            N[i] = Integer.parseInt(S.nextToken());
+        }
 
-// import com.example.view.MainFrame;
-
-public class App 
-{
-
-    private static Scanner sc;
-
-    public static void main( String[] args ) throws IOException
-    {
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        //(와 )를 쪼개서 넣을 첫 문자열
-        
-        String s = br.readLine();
-
-        //쪼갠 문자열들을 담았다가 꺼냇다가 할 스택
-        Stack<Character> st = new Stack<Character>();
-
-        //개수
-        int N = 0;
-
-        for(int i=0; i<s.length(); i++){
-            if(s.charAt(i) == '('){
-                st.push('(');
-            }
-            else{
-                st.pop();
-                if(s.charAt(i-1)== '('){
-                    N += st.size();
+        for(int i=0; i<N.length; i++){
+            while(!st.isEmpty()){
+                int n = N[i];
+                if( N[st.peek()] < n){
+                    N[st.pop()] = n;
                 }
                 else{
-                    N += 1;
+                    break;
                 }
-
             }
+            st.push(i);
         }
-        System.out.println(N);
+
+        if(!st.isEmpty()){
+            N[st.pop()] = -1;
+        }
+
+        for(int i=0; i<N.length; i++){
+            sb.append(N[i]).append(" ");
+        }
+        System.out.println(sb);
+
     }
 }
