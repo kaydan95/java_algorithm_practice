@@ -3,27 +3,34 @@ package com.example;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
-import java.util.Stack;
-import java.util.StringTokenizer;
+import java.util.Arrays;
 
 public class App {
+
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        //입력받을 문자열 S
         String S = br.readLine();
-        int[] A = new int[26];
+        //문자열 S의 길이만큼 들어 갈 문자 배열 SA
+        String[] SA = new String[S.length()];
 
+        //반복문을 돌려 처음부터 뽑아준다.
         for(int i=0; i<S.length(); i++){
-            A[S.charAt(i)-97] += 1;
+            SA[i] = S.substring(i, S.length());
         }
 
+        //문자 배열 SA를 알파벳 순으로 정렬
+        Arrays.sort(SA);
+
+        //결과물을 담아줄 sb
         StringBuilder sb = new StringBuilder();
-        for(int i : A){
-            sb.append(i + " ");
+
+        //SA안에 있는 sa를 하나씩 append
+        for(String sa : SA){
+            sb.append(sa).append("\n");
         }
-
         System.out.println(sb);
-
     }    
 }
 
