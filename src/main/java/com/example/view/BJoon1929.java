@@ -18,25 +18,25 @@ public class BJoon1929 {
         int F = Integer.parseInt(SS[0]);
         int E = Integer.parseInt(SS[1]);
 
-        //E+1 만큼 설정해주고 그안에서 t,f판별
-        boolean[] b = new boolean[E+1];
-        
-        //boolean  의 기본값은 false, true 라는 건 소수가 아닌 정수라는 뜻
-        b[0] = b[1] = true;
+        //소수인지 아닌지 판별해줄 boolean 배열. 초기값이 false!!
+        boolean[] tof = new boolean[E + 1];
+        tof[0] = tof[1] = true;
 
-        for(int i=2; i<E; i++){
-            if(b[i]==true){
-                continue;
-            }
-            for(int j=i+i; j<=E; j=j+i){
-                b[j] = true;
-            }
-        }
-        for(int i=F; i<=E; i++){
-            if(b[i] == false){
-                System.out.println(i + " ");
+        StringBuilder sb = new StringBuilder();
+        
+        for(int i = 2; i*i < tof.length; i++) {
+            if(tof[i]) continue;
+            for(int j = i*i; j < tof.length; j += i) {
+                tof[j] = true;
             }
         }
+
+        for(int i = F; i<=E; i++) {
+            if(!tof[i]) {
+                sb.append(i).append("\n");
+            }
+        }
+		System.out.println(sb);
     }    
 }
 
