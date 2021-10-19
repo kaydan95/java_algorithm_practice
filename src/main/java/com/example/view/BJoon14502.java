@@ -30,6 +30,7 @@ public class BJoon14502 {
         // 벽이 3개라면 바이러스 퍼진 결과로 안전지대 최대값 도출
         if(count_wall == 3){
             spreadvirus();
+            CheckSafePlace();
             return;
         }
         // 아니라면 계속 벽을 세우고 허물고를 반복
@@ -90,12 +91,10 @@ public class BJoon14502 {
                 }
             }
         }
-        // 밑에서 체크한 0의 개수, 최대값이 정답 (메인에서 리턴)
-        anw = CheckSafePlace();
     }
 
     // 3. 바이러스 확산 다 되고 안전지대 체크
-    public static int CheckSafePlace(){
+    public static void CheckSafePlace(){
         int checking = 0;
         for(int i=0; i<N; i++){
             for(int j=0; j<M; j++){
@@ -105,7 +104,7 @@ public class BJoon14502 {
                 }
             }
         }
-        return Math.max(anw, checking);
+        anw = Math.max(anw, checking);
     }
 
 
