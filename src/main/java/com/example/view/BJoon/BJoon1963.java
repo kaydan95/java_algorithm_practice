@@ -1,4 +1,4 @@
-package com.example.view;
+package com.example.view.BJoon;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-import org.w3c.dom.TypeInfo;
 
 
 class pw {

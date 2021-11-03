@@ -1,4 +1,4 @@
-package com.example.view;
+package com.example.view.BJoon;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
